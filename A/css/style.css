@@ -1,0 +1,24 @@
+/* Flexbox untuk memisahkan area kiri (foto) dan kanan (teks) */
+.katalog-gunpla {
+  display: flex;
+  gap: 20px; 
+}
+
+/* KUNCI 1: Jadikan kontainer foto sebagai JANGKAR dengan relative */
+.area-foto {
+  position: relative;
+  width: 300px; /* Sesuaikan dengan ukuran foto yang kamu mau */
+}
+
+.foto-utama {
+  width: 100%;
+  border-radius: 8px; /* Biar ujung fotonya agak membulat (opsional) */
+}
+
+/* KUNCI 2: Buat logo melayang dengan absolute */
+.logo-grade {
+  position: absolute;
+  top: 10px;  /* Jarak 10px dari bingkai atas */
+  left: 10px; /* Jarak 10px dari bingkai kiri */
+  width: 50px; /* Ukuran logonya diperkecil */
+}

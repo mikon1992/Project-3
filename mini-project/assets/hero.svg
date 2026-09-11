@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="100%" height="100%">
+  <rect width="500" height="400" rx="16" fill="#f1f5f9"/>
+  <!-- Decorative Laptop Frame -->
+  <rect x="75" y="80" width="350" height="220" rx="8" fill="#0f172a"/>
+  <rect x="85" y="90" width="330" height="200" rx="4" fill="#1e293b"/>
+  <!-- Code Lines -->
+  <rect x="110" y="120" width="120" height="12" rx="4" fill="#3b82f6"/>
+  <rect x="110" y="145" width="200" height="10" rx="4" fill="#94a3b8"/>
+  <rect x="130" y="165" width="160" height="10" rx="4" fill="#22c55e"/>
+  <rect x="130" y="185" width="110" height="10" rx="4" fill="#eab308"/>
+  <rect x="110" y="210" width="80" height="12" rx="4" fill="#3b82f6"/>
+  <!-- Stand -->
+  <path d="M 50 310 L 450 310 L 430 325 L 70 325 Z" fill="#cbd5e1"/>
+</svg>
