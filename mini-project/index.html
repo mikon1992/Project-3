@@ -12,9 +12,75 @@
             <div class="container nav-wrapper">
                 <a href="#" class="logo"> ruangoding</a>
                 <nav aria-label="navigasi-utama">
-                    <ul class="nav-links"></ul>
-                    
+                    <ul class="nav-links">
+                        <li><a href="#fitur">Fitur</a></li>
+                        <li><a href="#kurikulum">kurikulum</a></li>
+                        <li><a id="daftar-a" href="#daftar" class="btn btn-sm">daftar</a></li>
+                    </ul>
                 </nav>
             </div>
         </header>
+
+        <main> 
+            <section class="hero container">
+                <div class="hero-text">
+                    <h1>Ruang Paling Tepat Buat Paham Dasar code</h1>
+                    <p>Nggak ada jalan instan di RuangOding. Kita bedah struktur HTML dan tata letak CSS murni pelan-pelan agar fondasi ngodingmu makin solid.</p>
+                    <a href="#daftar" class="btn">Daftar Sekarang</a>
+                </div>
+                <div class="hero-img">
+                    <img src="assets/hero.svg" alt="Ilustrasi laptop dan code">
+                </div>
+            </section>
+
+            <section id="fitur" class="bg-light">
+                <div class="container section-pad">
+                    <h2 class="text-center">kenapa pilih kami?</h2>
+                    <div class="flex-grid">
+                        <article class="card">
+                            <h3>belajar dari 0</h3>
+                            <p>Materi disusun khusus bagi pemula agar mudah dipahami tahap demi tahap</p>
+                        </article>
+                        <article class="card">
+                            <h3>praktik langsung</h3>
+                            <p>Latihan coding interaktif untuk mengasah keterampilanmu secara langsung</p>
+                        </article>
+                        <article class="card">
+                            <h3>bimbingan mentor</h3>
+                            <p>Dapatkan bimbingan dari mentor berpengalaman untuk mempercepat proses belajarmu</p>
+                        </article>
+                        <article class="card">
+                            <h3>Komunitas Aktif</h3>
+                            <p>Dukungan mentor dan sesama siswa melalui grup diskusi eksklusif.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <section id="kurikulum" class="container section-pad">
+                <h2 class="text-center">Materi Utama</h2>
+                <ul class="list-materi">
+                    <li><strong>Modul 1:</strong> HTML5 Semantik dan Aksesibilitas (a11y).</li>
+                    <li><strong>Modul 2:</strong> CSS3 Box Model, Tipografi, dan Variabel.</li>
+                    <li><strong>Modul 3:</strong> Layouting modern menggunakan Flexbox.</li>
+                    <li><strong>Modul 4:</strong> Responsive Web Design dan Publikasi GitHub.</li>
+                </ul>
+            </section>
+            <section id="daftar" class="cta">
+                <div class="container section-pad text-center">
+                <h2>Siap Menjadi Web Developer?</h2>
+                <p>Bergabunglah bersama kami dan bangun website pertamamu minggu ini.</p>
+                <form class="form-daftar" action="#" method="GET">
+                    <label for="email" class="sr-only">Email Anda</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email mahasiswa..." required>
+                    <button type="submit" class="btn btn-invert">Daftar</button>
+                </form>
+                </div>
+            </section>
+        </main>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ruangoding. dengan ngoding hidup menjadi vibing</p>
+        </div>
+    </footer>
+</body>
 </html>
