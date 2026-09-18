@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ruangoding - tempat belajar coding</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-wrapper">
+            <a href="#" class="logo"> ruangoding</a>
+            <button id="mobile-menu-btn" aria-expanded="false" aria-controls="main-nav" class="btn-icon mobile-only">
+                ☰
+            </button>
+            
+            <nav id="main-nav" aria-label="navigasi-utama">
+                <ul class="nav-links">
+                    <li><a href="#fitur">Fitur</a></li>
+                    <li><a href="#kurikulum">Kurikulum</a></li>
+                    <li><a href="#faq-section">FAQ</a></li>
+                    <li><button id="theme-toggle" class="btn btn-sm btn-invert">Tema HITAM</button></li>
+                    <li><a id="daftar-a" href="#daftar" class="btn btn-sm">Daftar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main> 
+        <section class="hero container">
+            <div class="hero-text">
+                <h1>Ruang Paling Tepat Buat Paham Dasar code</h1>
+                <p>Nggak ada jalan instan di RuangOding. Kita bedah struktur HTML dan tata letak CSS murni pelan-pelan agar fondasi ngodingmu makin solid.</p>
+                <a href="#daftar" class="btn">Daftar Sekarang</a>
+            </div>
+            <div class="hero-img">
+                <img src="assets/hero.svg" alt="Ilustrasi laptop dan code">
+            </div>
+        </section>
+        <section id="fitur" class="bg-light">
+            <div class="container section-pad">
+                <h2 class="text-center">Kenapa Pilih Kami?</h2>
+                
+                <div class="filter-container text-center" style="margin-bottom: 2rem;">
+                    <label for="filter-fitur">Filter Layanan: </label>
+                    <select id="filter-fitur">
+                        <option value="semua">Semua Fitur</option>
+                        <option value="pemula">Untuk Pemula</option>
+                        <option value="lanjutan">Untuk Lanjutan</option>
+                    </select>
+                </div>
+                <div id="fitur-grid" class="flex-grid" aria-live="polite"></div>
+            </div>
+        </section>
+        <section id="faq-section" class="container section-pad">
+            <h2 class="text-center">Pertanyaan Sering Diajukan</h2>
+            <div class="faq-container">
+                <article class="faq-item">
+                    <h3>
+                        <button class="faq-btn" aria-expanded="false" aria-controls="faq-1">
+                            Apakah materi ini cocok untuk pemula?
+                        </button>
+                    </h3>
+                    <div id="faq-1" class="faq-content">
+                        <p>Sangat cocok! Kami menyusun kurikulum dari nol agar mudah dipahami.</p>
+                    </div>
+                </article>
+                <article class="faq-item">
+                    <h3>
+                        <button class="faq-btn" aria-expanded="false" aria-controls="faq-2">
+                            Berapa lama waktu untuk menyelesaikan modul?
+                        </button>
+                    </h3>
+                    <div id="faq-2" class="faq-content">
+                        <p>Rata-rata siswa menyelesaikan satu modul dalam waktu 1-2 minggu.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="daftar" class="cta">
+            <div class="container section-pad text-center">
+                <h2>Siap Menjadi Web Developer?</h2>
+                <p>Bergabunglah bersama kami dan bangun website pertamamu minggu ini.</p>
+                <form id="form-pendaftaran" class="form-daftar" novalidate>
+                    <label for="email" class="sr-only">Email Anda</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email mahasiswa..." required>
+                    <button type="submit" class="btn btn-invert">Daftar</button>
+                </form>
+                <p id="form-feedback" aria-live="polite" style="margin-top: 1rem; font-weight: bold;"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ruangoding. dengan ngoding hidup menjadi vibing</p>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="btn btn-icon" aria-label="Kembali ke atas" hidden>↑</button>
+</body>
+</html>

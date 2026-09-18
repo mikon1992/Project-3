@@ -1,0 +1,17 @@
+[ 
+  { 
+    "id": 1, 
+    "judule": "DOM Dasar", 
+    "durasi": 45 
+  }, 
+  { 
+    "id": 2, 
+    "ju2dul": "Event dan Form", 
+    "durasi": 60 
+  }, 
+  { 
+    "id": 3, 
+    "judul": "Asynchronous JavaScript", 
+    "durasi": 75 
+  } 
+] 
