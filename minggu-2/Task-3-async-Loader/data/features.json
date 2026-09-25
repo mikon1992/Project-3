@@ -1,12 +1,12 @@
 [ 
   { 
     "id": 1, 
-    "judule": "DOM Dasar", 
+    "judul": "DOM Dasar", 
     "durasi": 45 
   }, 
   { 
     "id": 2, 
-    "ju2dul": "Event dan Form", 
+    "judul": "Event dan Form", 
     "durasi": 60 
   }, 
   { 
