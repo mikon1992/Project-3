@@ -6,25 +6,26 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
+            $table->foreignId('category_id')->constrained()->restrictOnDelete();
+            $table->string('code', 30)->unique();
+            $table->string('title', 150);
             $table->text('description')->nullable();
-            $table->date('activity_date');
-            $table->string('category', 50);
-            $table->string('status', 20)->default('Planned');
+            $table->dateTime('start_at');
+            $table->dateTime('end_at');
+            $table->string('location')->nullable();
+            $table->unsignedInteger('capacity')->nullable();
+            $table->string('status')->default('draft');
+            $table->string('poster_path')->nullable();
+            $table->unsignedInteger('registered_count')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('activities');

@@ -1,10 +1,11 @@
 @extends('layouts.app')
-
+@section('title', 'Tambah Activity')
 @section('content')
-    <h1>Tambah Kegiatan</h1>
-    
-    <form action="{{ route('activities.store') }}" method="POST">
-        @csrf
-        @include('activities._form')
+<div class="card">
+    <h1>Tambah Activity</h1>
+    <p class="muted">Activity dibuat sebagai draft. Status tidak disimpan dari form edit umum.</p>
+    <form action="{{ route('activities.store') }}" method="POST" enctype="multipart/form-data">
+        @include('activities._form', ['submitLabel' => 'Simpan Activity'])
     </form>
+</div>
 @endsection

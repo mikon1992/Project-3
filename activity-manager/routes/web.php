@@ -1,58 +1,23 @@
-namespace Database\Seeders;
+<?php
 
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('activities', ActivityController::class);
+Route::get('/', fn () => to_route('activities.index'));
 
-class ActivitySeeder extends Seeder {
-    public function run(): void {
-        Activity::insert([
-            [
-                'title' => 'Workshop Git Dasar',
-                'description' => 'Latihan kolaborasi repository.',
-                'activity_date' => '2026-10-05',
-                'category' => 'Workshop',
-                'status' => 'Planned',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'title' => 'Seminar Web Quality',
-                'description' => 'Pengenalan maintainability dan testing.',
-                'activity_date' => '2026-10-12',
-                'category' => 'Seminar',
-                'status' => 'Planned',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'title' => 'Rapat Proyek Akhir',
-                'description' => 'Diskusi pembagian tugas.',
-                'activity_date' => '2026-10-15',
-                'category' => 'Meeting',
-                'status' => 'Ongoing',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'title' => 'Pengumpulan Modul 1',
-                'description' => 'Submit tugas ke e-learning.',
-                'activity_date' => '2026-09-20',
-                'category' => 'Tugas',
-                'status' => 'Done',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'title' => 'Presentasi Kelompok',
-                'description' => 'Demo aplikasi ke dosen.',
-                'activity_date' => '2026-10-20',
-                'category' => 'Presentasi',
-                'status' => 'Planned',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        ]);
-    }
-}
+// Harus didefinisikan sebelum resource agar "trash" tidak dianggap sebagai {activity}.
+Route::get('activities/trash', [ActivityController::class, 'trash'])
+    ->name('activities.trash');
+Route::post('activities/{activity}/restore', [ActivityController::class, 'restore'])
+    ->name('activities.restore');
+Route::post('activities/{activity}/publish', [ActivityController::class, 'publish'])
+    ->name('activities.publish');
+Route::post('activities/{activity}/complete', [ActivityController::class, 'complete'])
+    ->name('activities.complete');
+Route::post('activities/{activity}/registrations', [RegistrationController::class, 'store'])
+    ->name('registrations.store');
+
+Route::resource('activities', ActivityController::class);
+Route::resource('categories', CategoryController::class)->except(['show']);
