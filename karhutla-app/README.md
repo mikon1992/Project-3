@@ -1,58 +1,78 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Rimba Siaga
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi komunitas untuk pelaporan dan pemantauan indikasi kebakaran hutan dan lahan. Peninjauan relawan dan status selesai hanya menggambarkan proses aplikasi, bukan verifikasi resmi kejadian atau pernyataan bahwa api telah padam.
 
-## About Laravel
+## Identitas
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Nama mahasiswa: isi nama
+- NIM: isi NIM
+- Kelas: isi kelas
+- Judul: Pelaporan dan Pemantauan Kebakaran Hutan dan Lahan
+- Repository: isi URL repository
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Kebutuhan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.3 sampai 8.5 untuk Laravel 13
+- Composer
+- MySQL atau MariaDB
+- XAMPP Linux atau layanan PHP dan database setara
 
-## Learning Laravel
+Periksa versi PHP CLI dengan `php -v`, versi framework dengan `composer show laravel/framework`, dan kecocokan dependensi dengan `composer check-platform-reqs`.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalasi
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Siapkan kerangka Laravel 13 dengan Composer.
+2. Salin berkas aplikasi dari folder `karhutla-app/` ke root proyek Laravel.
+3. Salin `.env.example` menjadi `.env`.
+4. Atur koneksi database MySQL/MariaDB di `.env`.
+5. Pasang dependensi dengan `composer install`.
+6. Buat application key dengan `php artisan key:generate`.
+7. Jalankan migration dan data demo dengan `php artisan migrate:fresh --seed`.
+8. Jalankan aplikasi dengan `php artisan serve`.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Jangan commit `.env`. `.env.example` hanya berisi konfigurasi contoh tanpa password pribadi.
 
-## Agentic Development
+## Database
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Buat database MySQL bernama `karhutla_db`, lalu sesuaikan nilai `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` pada `.env`. Migration membuat tabel users, areas, reports, forwardings, dan report_status_logs beserta foreign key.
 
-```bash
-composer require laravel/boost --dev
+Aplikasi memakai disk lokal privat Laravel untuk file bukti melalui route yang memeriksa authorization. `php artisan storage:link` tidak digunakan karena bukti tidak dibuka melalui folder publik.
 
-php artisan boost:install
-```
+## Akun demo
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Semua akun menggunakan password `karhutla123`.
 
-## Contributing
+| Role | Nama | Email |
+|---|---|---|
+| Pelapor | Andi Pratama | andi@demo.id |
+| Pelapor | Maya Lestari | maya@demo.id |
+| Relawan | Sari Wulandari | sari@demo.id |
+| Koordinator | Budi Santoso | budi@demo.id |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Alur status
 
-## Code of Conduct
+`submitted` → `under_review` → `flagged` → `forwarded` → `closed`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Relawan dapat menutup laporan dari `under_review`. Status `closed` final.
 
-## Security Vulnerabilities
+## Business rules
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- BR-01: Pelapor hanya dapat mengubah atau membatalkan laporan miliknya saat `submitted`.
+- BR-02: Laporan hanya dapat ditandai `flagged` setelah ditinjau dan mempunyai catatan.
+- BR-03: Hanya koordinator yang dapat mencatat penerusan dari `flagged`, satu kali untuk tiap laporan.
+- BR-04: Perubahan status harus mengikuti alur dan laporan `closed` tidak dapat diubah lagi.
+- BR-05: Pelapor tidak dapat membuat laporan aktif di area yang sama dengan waktu kejadian dalam rentang 60 menit dari laporannya yang lain.
 
-## License
+## Pengujian manual
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Ikuti checklist lengkap di `docs/tes-AC-01-sampai-AC-13.md`.
+
+- Uji login, logout, dan akses guest.
+- Uji ownership dengan dua akun pelapor berbeda.
+- Uji rentang latitude -90 sampai 90 dan longitude -180 sampai 180.
+- Uji file JPG, JPEG, PNG, PDF, file tidak diizinkan, dan ukuran di atas 2 MB.
+- Uji semua transisi status dan role yang berhak.
+- Uji filter serta pagination dengan query tetap pada URL.
+- Periksa request area summary pada DevTools Network.
+- Periksa perubahan status pada tabel report_status_logs.
+- Uji rekap dengan filter area dan status.
